@@ -69,6 +69,8 @@ public class ShopByGender extends BaseClass {
 	WebElement duffleBag;
 
 
+	@FindBy(xpath="//button[text()='Add to cart']")
+	WebElement Addtocart;
 
 	public ShopByGender()
 	{
@@ -166,5 +168,13 @@ public class ShopByGender extends BaseClass {
 	{
 		WebElement BottomsPrd11 = wait.until(ExpectedConditions.elementToBeClickable(BottomsPrd1));
 		BottomsPrd11.click();
+	}
+	public void ClickOnAddtoCart()
+	{
+		
+		WebElement Addtocart1 = wait.until(ExpectedConditions.elementToBeClickable(Addtocart));
+
+		Addtocart.click();
+		
 	}
 }

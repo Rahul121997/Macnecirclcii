@@ -2,6 +2,7 @@ package RoughPkg;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -29,12 +30,15 @@ import org.testng.annotations.Test;
 
 import LumaPages.LoginPage;
 import LumaPages.LumaCreateAccountPages;
+import LumaPages.ShopByGender;
+import LumaTestCases.CheckOutItems;
 import LumaTestCases.LumaLoginTest;
 import Pages.BaseClass;
 
 public class Tests extends BaseClass {
 
-	LumaLoginTest lp;
+	static LumaLoginTest lp;
+	static ShopByGender spg;
 	
 
 	@BeforeClass
@@ -43,13 +47,19 @@ public class Tests extends BaseClass {
 		MainRun();
 		lp=new LumaLoginTest();
 		lp.LoginTestR();
+		
 	}
 
-	
-	public void testHelloWorld() 
+	@Test
+	public void testHelloWorld() throws FileNotFoundException 
 	{
+		spg=new ShopByGender();
+		spg.ClcikWomenShoppingBtn();
+		spg.ClickMainWomenShpBtn();
+		spg.ClcikWomenPrd1();
+		spg.ClcikPrdctSize();
+		spg.ClickOnAddtoCart();
 		
-
 	}
 }
 

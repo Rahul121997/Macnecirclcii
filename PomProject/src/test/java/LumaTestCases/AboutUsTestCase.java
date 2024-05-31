@@ -18,9 +18,9 @@ import Pages.BaseClass;
 @Listeners(Listensers.MyListener.class)
 public class AboutUsTestCase extends BaseClass {
 
-	public static AboutUsPage aup;
-	public static FileReader reader;
-	public static Properties p;
+	public  AboutUsPage aup;
+	public  FileReader reader;
+	public  Properties p;
 	public static String path="./src/test/resources/Properties/testdata.properties";
 
 	@BeforeClass(alwaysRun=true)

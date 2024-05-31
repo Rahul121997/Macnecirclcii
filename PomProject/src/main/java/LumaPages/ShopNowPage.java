@@ -25,10 +25,6 @@ public class ShopNowPage extends BaseClass{
 	@FindBy(xpath="//div[normalize-space(text())='sub-total:']")
 	WebElement itemincart;
 
-
-
-	
-
 	@FindBy(xpath="//a[text()='Checkout']")
 	WebElement checkout;
 	
@@ -210,7 +206,8 @@ public class ShopNowPage extends BaseClass{
 	}
 	public void ClickonContinueBtn()
 	{
-		ContinueBtn.click();
+		WebElement ContinueBtn1= wait.until(ExpectedConditions.elementToBeClickable(ContinueBtn));
+		ContinueBtn1.click();
 	}
 	public void ClickOnPlaceOrderButton()
 	{
