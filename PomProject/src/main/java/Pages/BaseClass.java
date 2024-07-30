@@ -7,8 +7,10 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileReader;
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.time.Duration;
 import java.util.Date;
 import java.util.Properties;
@@ -26,18 +28,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.Test;
 
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.Status;
-import com.aventstack.extentreports.reporter.ExtentSparkReporter;
-import com.titusfortner.logging.SeleniumLogger;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import LumaPages.LoginPage;
-import LumaPages.ShopNowPage;
 
 public class BaseClass {
 
@@ -52,7 +47,35 @@ public class BaseClass {
 	public static String scrdate;
 	public static Properties p=new Properties();  ;
 
+	
+	public void CheckBrokenLinks(String Url) throws MalformedURLException, IOException
+	{
+        HttpURLConnection connection = (HttpURLConnection) new URL(Url).openConnection();
+        connection.setRequestMethod("GET");
+        connection.connect();
+       int Response= connection.getResponseCode();
+       if(Response==400)
+       {
+    	   System.out.println("link is a broken link :"+Url);
+       }
 
+		
+		
+	}
+
+	public void TS() throws IOException
+	{
+		
+		TakesScreenshot ts=(TakesScreenshot)driver;
+		File fis=ts.getScreenshotAs(OutputType.FILE);
+		Date date=new Date();
+		int time=date.getSeconds();
+		String Path="src/test/java/img.png";
+		FileUtils.copyFile(fis, new File(Path));
+		
+	}
+	
+	
 
 	public static void MainRun()
 	{
@@ -137,7 +160,7 @@ public class BaseClass {
 		String scrdate=date.toString().replace(":","_").replace(" ","_");
 		String screenshotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
 		return screenshotFile;
-		
+				
 	}
 
 	public void CloseDriver()
@@ -147,7 +170,8 @@ public class BaseClass {
 		{
 			driver.quit();	
 		}
-
+		
+		
 
 	}
 }

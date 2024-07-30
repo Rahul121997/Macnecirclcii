@@ -3,16 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="LumaTestCases.AboutUsTestCase">
+      <class name="RoughPkg.Xpaths">
         <methods>
-          <include name="ValidatePrivacyPolicy"/>
-          <include name="TearDown"/>
-          <include name="Start"/>
-          <include name="ValidateContactLuma"/>
-          <include name="ValidateAbouts"/>
-          <include name="ValidateCoustmerService"/>
+          <include name="Amzin"/>
+          <include name="Test"/>
         </methods>
-      </class> <!-- LumaTestCases.AboutUsTestCase -->
+      </class> <!-- RoughPkg.Xpaths -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
